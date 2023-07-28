@@ -41,7 +41,10 @@ public class Player : MonoBehaviour
 
     private void ScaleCube(float scaleChangeRate)
     {
+        // Calculate the new scale based on the current scale and the scale change rate
         Vector3 newScale = transform.localScale + (Vector3.one * scaleChangeRate * Time.deltaTime);
+
+        // Ensure the new scale does not go below zero
         transform.localScale = Vector3.Max(newScale, Vector3.zero);
     }
 }
