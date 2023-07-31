@@ -37,6 +37,18 @@ public class Player : MonoBehaviour
         {
             ScaleCube(-_scaleChangeRateE);
         }
+
+        // Check if '1' key is pressed to change the color to red
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChangeColor(Color.red);
+        }
+
+        // Check if '2' key is pressed to change the color to blue
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeColor(Color.blue);
+        }
     }
 
     private void ScaleCube(float scaleChangeRate)
@@ -46,5 +58,14 @@ public class Player : MonoBehaviour
 
         // Ensure the new scale does not go below zero
         transform.localScale = Vector3.Max(newScale, Vector3.zero);
+    }
+
+    private void ChangeColor(Color newColor)
+    {
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = newColor;
+        }
     }
 }
